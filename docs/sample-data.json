@@ -1,0 +1,625 @@
+{
+  "format": "capacity-desk-backup",
+  "version": 1,
+  "exportedAt": "2026-10-08T21:18:44.406Z",
+  "data": {
+    "fixedCommitments": [
+      {
+        "id": "fc-001",
+        "kind": "class",
+        "title": "Calculus III",
+        "weekday": 0,
+        "startMin": 480,
+        "endMin": 570
+      },
+      {
+        "id": "fc-002",
+        "kind": "class",
+        "title": "Calculus III",
+        "weekday": 2,
+        "startMin": 480,
+        "endMin": 570
+      },
+      {
+        "id": "fc-003",
+        "kind": "class",
+        "title": "Data Structures",
+        "weekday": 0,
+        "startMin": 600,
+        "endMin": 690
+      },
+      {
+        "id": "fc-004",
+        "kind": "class",
+        "title": "Data Structures",
+        "weekday": 2,
+        "startMin": 600,
+        "endMin": 690
+      },
+      {
+        "id": "fc-005",
+        "kind": "class",
+        "title": "Physics II",
+        "weekday": 1,
+        "startMin": 540,
+        "endMin": 630
+      },
+      {
+        "id": "fc-006",
+        "kind": "class",
+        "title": "Physics II",
+        "weekday": 3,
+        "startMin": 540,
+        "endMin": 630
+      },
+      {
+        "id": "fc-007",
+        "kind": "class",
+        "title": "Digital Logic",
+        "weekday": 1,
+        "startMin": 660,
+        "endMin": 750
+      },
+      {
+        "id": "fc-008",
+        "kind": "class",
+        "title": "Digital Logic",
+        "weekday": 3,
+        "startMin": 660,
+        "endMin": 750
+      },
+      {
+        "id": "fc-009",
+        "kind": "class",
+        "title": "Physics lab",
+        "weekday": 4,
+        "startMin": 540,
+        "endMin": 720
+      },
+      {
+        "id": "fc-010",
+        "kind": "class",
+        "title": "Technical Writing",
+        "weekday": 4,
+        "startMin": 780,
+        "endMin": 870
+      },
+      {
+        "id": "fc-011",
+        "kind": "commute",
+        "title": "Bus to campus",
+        "weekday": 0,
+        "startMin": 435,
+        "endMin": 475
+      },
+      {
+        "id": "fc-012",
+        "kind": "commute",
+        "title": "Bus to campus",
+        "weekday": 1,
+        "startMin": 435,
+        "endMin": 475
+      },
+      {
+        "id": "fc-013",
+        "kind": "commute",
+        "title": "Bus to campus",
+        "weekday": 2,
+        "startMin": 435,
+        "endMin": 475
+      },
+      {
+        "id": "fc-014",
+        "kind": "commute",
+        "title": "Bus to campus",
+        "weekday": 3,
+        "startMin": 435,
+        "endMin": 475
+      },
+      {
+        "id": "fc-015",
+        "kind": "commute",
+        "title": "Bus to campus",
+        "weekday": 4,
+        "startMin": 435,
+        "endMin": 475
+      }
+    ],
+    "shifts": [
+      {
+        "id": "sh-059",
+        "date": "2026-10-08",
+        "startMin": 1020,
+        "endMin": 1320,
+        "note": "Bookstore"
+      },
+      {
+        "id": "sh-060",
+        "date": "2026-10-10",
+        "startMin": 960,
+        "endMin": 1260,
+        "note": "Bookstore"
+      }
+    ],
+    "trainingTemplates": [
+      {
+        "id": "tt-016",
+        "weekday": 0,
+        "startMin": 1080,
+        "durationMin": 75,
+        "name": "Push",
+        "load": "push",
+        "intensity": 3
+      },
+      {
+        "id": "tt-017",
+        "weekday": 1,
+        "startMin": 1080,
+        "durationMin": 75,
+        "name": "Legs",
+        "load": "legs",
+        "intensity": 3
+      },
+      {
+        "id": "tt-018",
+        "weekday": 3,
+        "startMin": 1080,
+        "durationMin": 75,
+        "name": "Pull",
+        "load": "pull",
+        "intensity": 3
+      },
+      {
+        "id": "tt-019",
+        "weekday": 5,
+        "startMin": 600,
+        "durationMin": 60,
+        "name": "Legs and run",
+        "load": "legs",
+        "intensity": 2
+      },
+      {
+        "id": "tt-020",
+        "weekday": 6,
+        "startMin": 540,
+        "durationMin": 45,
+        "name": "Skills and core",
+        "load": "skill",
+        "intensity": 1
+      }
+    ],
+    "trainingSessions": [
+      {
+        "id": "ts-021",
+        "templateId": "tt-016",
+        "weekStart": "2026-10-05",
+        "date": "2026-10-05",
+        "startMin": 1080,
+        "durationMin": 75,
+        "name": "Push",
+        "load": "push",
+        "intensity": 3,
+        "status": "done"
+      },
+      {
+        "id": "ts-022",
+        "templateId": "tt-017",
+        "weekStart": "2026-10-05",
+        "date": "2026-10-06",
+        "startMin": 1080,
+        "durationMin": 75,
+        "name": "Legs",
+        "load": "legs",
+        "intensity": 3,
+        "status": "done"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "bl-047",
+        "date": "2026-10-05",
+        "startMin": 840,
+        "durationMin": 90,
+        "category": "study",
+        "title": "Data Structures: Assignment 2",
+        "courseId": "co-024",
+        "assessmentId": "as-029",
+        "status": "done",
+        "energy": 4
+      },
+      {
+        "id": "bl-048",
+        "date": "2026-10-05",
+        "startMin": 960,
+        "durationMin": 60,
+        "category": "study",
+        "title": "Calculus III: Midterm",
+        "courseId": "co-023",
+        "assessmentId": "as-028",
+        "status": "done",
+        "energy": 3
+      },
+      {
+        "id": "bl-049",
+        "date": "2026-10-06",
+        "startMin": 840,
+        "durationMin": 90,
+        "category": "study",
+        "title": "Calculus III: Midterm",
+        "courseId": "co-023",
+        "assessmentId": "as-028",
+        "status": "done",
+        "energy": 4
+      },
+      {
+        "id": "bl-050",
+        "date": "2026-10-06",
+        "startMin": 1230,
+        "durationMin": 60,
+        "category": "study",
+        "title": "Physics II: Midterm",
+        "courseId": "co-025",
+        "assessmentId": "as-030",
+        "status": "done",
+        "energy": 2
+      },
+      {
+        "id": "bl-051",
+        "date": "2026-10-07",
+        "startMin": 780,
+        "durationMin": 90,
+        "category": "study",
+        "title": "Calculus III: Midterm",
+        "courseId": "co-023",
+        "assessmentId": "as-028",
+        "status": "done",
+        "energy": 4
+      },
+      {
+        "id": "bl-052",
+        "date": "2026-10-07",
+        "startMin": 900,
+        "durationMin": 90,
+        "category": "study",
+        "title": "Data Structures: Assignment 2",
+        "courseId": "co-024",
+        "assessmentId": "as-029",
+        "status": "done",
+        "energy": 3
+      },
+      {
+        "id": "bl-053",
+        "date": "2026-10-07",
+        "startMin": 1140,
+        "durationMin": 90,
+        "category": "project",
+        "title": "Project",
+        "courseId": null,
+        "assessmentId": null,
+        "status": "done",
+        "energy": 4
+      },
+      {
+        "id": "bl-054",
+        "date": "2026-10-08",
+        "startMin": 840,
+        "durationMin": 90,
+        "category": "study",
+        "title": "Physics II: Midterm",
+        "courseId": "co-025",
+        "assessmentId": "as-030",
+        "status": "planned",
+        "energy": null
+      },
+      {
+        "id": "bl-055",
+        "date": "2026-10-08",
+        "startMin": 1200,
+        "durationMin": 90,
+        "category": "study",
+        "title": "Calculus III: Midterm",
+        "courseId": "co-023",
+        "assessmentId": "as-028",
+        "status": "planned",
+        "energy": null
+      },
+      {
+        "id": "bl-056",
+        "date": "2026-10-09",
+        "startMin": 930,
+        "durationMin": 90,
+        "category": "study",
+        "title": "Calculus III: Midterm",
+        "courseId": "co-023",
+        "assessmentId": "as-028",
+        "status": "planned",
+        "energy": null
+      },
+      {
+        "id": "bl-057",
+        "date": "2026-10-10",
+        "startMin": 780,
+        "durationMin": 120,
+        "category": "study",
+        "title": "Data Structures: Assignment 2",
+        "courseId": "co-024",
+        "assessmentId": "as-029",
+        "status": "planned",
+        "energy": null
+      },
+      {
+        "id": "bl-058",
+        "date": "2026-10-11",
+        "startMin": 630,
+        "durationMin": 90,
+        "category": "study",
+        "title": "Calculus III: Midterm",
+        "courseId": "co-023",
+        "assessmentId": "as-028",
+        "status": "planned",
+        "energy": null
+      }
+    ],
+    "dayLogs": [
+      {
+        "id": "dl-061",
+        "date": "2026-10-05",
+        "energy": 4,
+        "sleepHours": 7.5
+      },
+      {
+        "id": "dl-062",
+        "date": "2026-10-06",
+        "energy": 4,
+        "sleepHours": 7
+      },
+      {
+        "id": "dl-063",
+        "date": "2026-10-07",
+        "energy": 3,
+        "sleepHours": 6.5
+      }
+    ],
+    "courses": [
+      {
+        "id": "co-023",
+        "name": "Calculus III",
+        "credits": 3,
+        "difficulty": 3,
+        "targetPercent": 92
+      },
+      {
+        "id": "co-024",
+        "name": "Data Structures",
+        "credits": 3,
+        "difficulty": 3,
+        "targetPercent": 92
+      },
+      {
+        "id": "co-025",
+        "name": "Physics II",
+        "credits": 3,
+        "difficulty": 3,
+        "targetPercent": 90
+      },
+      {
+        "id": "co-026",
+        "name": "Digital Logic",
+        "credits": 3,
+        "difficulty": 2,
+        "targetPercent": 90
+      },
+      {
+        "id": "co-027",
+        "name": "Technical Writing",
+        "credits": 2,
+        "difficulty": 1,
+        "targetPercent": 90
+      }
+    ],
+    "assessments": [
+      {
+        "id": "as-031",
+        "courseId": "co-023",
+        "name": "Quiz 1",
+        "kind": "quiz",
+        "weightPercent": 10,
+        "dueDate": "2026-09-24",
+        "scorePercent": 88,
+        "targetHours": null
+      },
+      {
+        "id": "as-028",
+        "courseId": "co-023",
+        "name": "Midterm",
+        "kind": "midterm",
+        "weightPercent": 30,
+        "dueDate": "2026-10-14",
+        "scorePercent": null,
+        "targetHours": 14
+      },
+      {
+        "id": "as-032",
+        "courseId": "co-023",
+        "name": "Quiz 2",
+        "kind": "quiz",
+        "weightPercent": 10,
+        "dueDate": "2026-11-05",
+        "scorePercent": null,
+        "targetHours": null
+      },
+      {
+        "id": "as-033",
+        "courseId": "co-023",
+        "name": "Final exam",
+        "kind": "exam",
+        "weightPercent": 50,
+        "dueDate": "2026-12-15",
+        "scorePercent": null,
+        "targetHours": null
+      },
+      {
+        "id": "as-034",
+        "courseId": "co-024",
+        "name": "Assignment 1",
+        "kind": "project",
+        "weightPercent": 10,
+        "dueDate": "2026-09-21",
+        "scorePercent": 95,
+        "targetHours": null
+      },
+      {
+        "id": "as-029",
+        "courseId": "co-024",
+        "name": "Assignment 2",
+        "kind": "project",
+        "weightPercent": 10,
+        "dueDate": "2026-10-12",
+        "scorePercent": null,
+        "targetHours": null
+      },
+      {
+        "id": "as-035",
+        "courseId": "co-024",
+        "name": "Midterm",
+        "kind": "midterm",
+        "weightPercent": 30,
+        "dueDate": "2026-10-22",
+        "scorePercent": null,
+        "targetHours": null
+      },
+      {
+        "id": "as-036",
+        "courseId": "co-024",
+        "name": "Term project",
+        "kind": "project",
+        "weightPercent": 10,
+        "dueDate": "2026-11-26",
+        "scorePercent": null,
+        "targetHours": null
+      },
+      {
+        "id": "as-037",
+        "courseId": "co-024",
+        "name": "Final exam",
+        "kind": "exam",
+        "weightPercent": 40,
+        "dueDate": "2026-12-17",
+        "scorePercent": null,
+        "targetHours": null
+      },
+      {
+        "id": "as-038",
+        "courseId": "co-025",
+        "name": "Quiz 1",
+        "kind": "quiz",
+        "weightPercent": 5,
+        "dueDate": "2026-09-29",
+        "scorePercent": 78,
+        "targetHours": null
+      },
+      {
+        "id": "as-039",
+        "courseId": "co-025",
+        "name": "Lab reports",
+        "kind": "lab",
+        "weightPercent": 20,
+        "dueDate": null,
+        "scorePercent": null,
+        "targetHours": null
+      },
+      {
+        "id": "as-030",
+        "courseId": "co-025",
+        "name": "Midterm",
+        "kind": "midterm",
+        "weightPercent": 30,
+        "dueDate": "2026-10-27",
+        "scorePercent": null,
+        "targetHours": null
+      },
+      {
+        "id": "as-040",
+        "courseId": "co-025",
+        "name": "Final exam",
+        "kind": "exam",
+        "weightPercent": 45,
+        "dueDate": "2026-12-18",
+        "scorePercent": null,
+        "targetHours": null
+      },
+      {
+        "id": "as-041",
+        "courseId": "co-026",
+        "name": "Midterm",
+        "kind": "midterm",
+        "weightPercent": 35,
+        "dueDate": "2026-10-29",
+        "scorePercent": null,
+        "targetHours": null
+      },
+      {
+        "id": "as-042",
+        "courseId": "co-026",
+        "name": "Lab work",
+        "kind": "lab",
+        "weightPercent": 25,
+        "dueDate": null,
+        "scorePercent": null,
+        "targetHours": null
+      },
+      {
+        "id": "as-043",
+        "courseId": "co-026",
+        "name": "Final exam",
+        "kind": "exam",
+        "weightPercent": 40,
+        "dueDate": "2026-12-16",
+        "scorePercent": null,
+        "targetHours": null
+      },
+      {
+        "id": "as-044",
+        "courseId": "co-027",
+        "name": "Essay 1",
+        "kind": "project",
+        "weightPercent": 30,
+        "dueDate": "2026-09-26",
+        "scorePercent": 91,
+        "targetHours": null
+      },
+      {
+        "id": "as-045",
+        "courseId": "co-027",
+        "name": "Essay 2",
+        "kind": "project",
+        "weightPercent": 30,
+        "dueDate": "2026-10-16",
+        "scorePercent": null,
+        "targetHours": null
+      },
+      {
+        "id": "as-046",
+        "courseId": "co-027",
+        "name": "Portfolio",
+        "kind": "project",
+        "weightPercent": 30,
+        "dueDate": "2026-12-10",
+        "scorePercent": null,
+        "targetHours": null
+      }
+    ],
+    "settings": {
+      "onboarded": true,
+      "sleepStartMin": 1410,
+      "sleepEndMin": 420,
+      "dailyOverheadMin": 120,
+      "minSessionsPerWeek": 4,
+      "projectHoursPerWeek": 3,
+      "notifyTraining": false,
+      "notifyConflicts": false,
+      "trainingLeadMin": 30
+    },
+    "configOverrides": {}
+  }
+}

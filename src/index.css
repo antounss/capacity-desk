@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* Fonts are bundled with the app (no font CDN, no network request). */
+@import "@fontsource/barlow/latin-400.css";
+@import "@fontsource/barlow/latin-500.css";
+@import "@fontsource/barlow/latin-600.css";
+@import "@fontsource/barlow-semi-condensed/latin-500.css";
+@import "@fontsource/barlow-semi-condensed/latin-600.css";
+
+/* Colour tokens. Components only ever use these names, so light and dark stay in step. */
+:root {
+  --paper: #eef1f2;
+  --surface: #ffffff;
+  --ink: #16202e;
+  --muted: #566273;
+  --line: #d0d7dd;
+  --accent: #0b6e5f;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcefeb;
+  --critical: #b3261e;
+  --critical-soft: #fbe9e7;
+  --warning: #8a5200;
+  --warning-soft: #fbefd9;
+  --info: #2f5d8a;
+  --info-soft: #e4edf6;
+  /* The week ledger: one colour per kind of hour. */
+  --seg-sleep: #2b3a67;
+  --seg-fixed: #6b7a8f;
+  --seg-training: #8e3b8a;
+  --seg-recovery: #3fa7a0;
+  --seg-work: #1f6fd0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f151b;
+    --surface: #18212b;
+    --ink: #e8edf2;
+    --muted: #9aa7b5;
+    --line: #2c3947;
+    --accent: #37b89f;
+    --accent-ink: #06231e;
+    --accent-soft: #12362f;
+    --critical: #ff8a80;
+    --critical-soft: #3a1512;
+    --warning: #f2b354;
+    --warning-soft: #3a2a0c;
+    --info: #8bb8e8;
+    --info-soft: #152a40;
+    --seg-sleep: #5a6db5;
+    --seg-fixed: #7f8ea3;
+    --seg-training: #c26bbd;
+    --seg-recovery: #4fbfb7;
+    --seg-work: #4f97ee;
+  }
+}
+
+@theme inline {
+  --font-sans: "Barlow", system-ui, sans-serif;
+  --font-display: "Barlow Semi Condensed", "Barlow", system-ui, sans-serif;
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-critical: var(--critical);
+  --color-critical-soft: var(--critical-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-seg-sleep: var(--seg-sleep);
+  --color-seg-fixed: var(--seg-fixed);
+  --color-seg-training: var(--seg-training);
+  --color-seg-recovery: var(--seg-recovery);
+  --color-seg-work: var(--seg-work);
+}
+
+/* Element defaults go in the base layer, so utility classes on a component always win. */
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.45;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: 0.005em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+/* Numbers that sit in columns keep the same width, so they line up. */
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Unallocated hours are drawn as hatching: room that exists but holds nothing yet. */
+.hatch {
+  background-image: repeating-linear-gradient(135deg, var(--accent) 0 2px, transparent 2px 7px);
+}
+.hatch-over {
+  background-image: repeating-linear-gradient(135deg, var(--critical) 0 3px, transparent 3px 7px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sheet-in {
+    animation: sheet-in 180ms ease-out;
+  }
+  @keyframes sheet-in {
+    from {
+      transform: translateY(24px);
+      opacity: 0;
+    }
+  }
+}
