@@ -1,0 +1,24 @@
+/* Adjustments for the page that hosts the preview. Deliberately outside any cascade
+   layer: the host's own reset is plain CSS, and plain CSS beats layered CSS, so the
+   app's base styles have to be restated here to apply. */
+
+/* The host already keeps content clear of the phone's system bars. */
+:root {
+  --flow-top: 0px;
+  --flow-bottom: 0px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.45;
+}

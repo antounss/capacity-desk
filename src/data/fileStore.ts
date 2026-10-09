@@ -66,8 +66,14 @@ const nativeStore: FileStore = {
 
 const browserStore: FileStore = {
   async read() {
-    const saved = localStorage.getItem(NAME);
-    return saved ? [fromBase64(saved)] : [];
+    // Storage can be blocked (private windows, some embedded views). Then the app
+    // simply starts empty instead of failing to open.
+    try {
+      const saved = localStorage.getItem(NAME);
+      return saved ? [fromBase64(saved)] : [];
+    } catch {
+      return [];
+    }
   },
   async write(bytes) {
     localStorage.setItem(NAME, toBase64(bytes));

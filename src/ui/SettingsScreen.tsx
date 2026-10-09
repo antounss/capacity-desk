@@ -10,7 +10,6 @@ import type { AppData, Now } from '../domain/types';
 import { Button, Field, NumberInput, Section, Sheet, Switch, TimeInput } from './kit';
 import { Tuning } from './Tuning';
 
-declare const __APP_VERSION__: string;
 
 export function SettingsScreen({ now }: { now: Now }) {
   const { data, updateSettings, replaceAll } = useApp();
@@ -23,6 +22,10 @@ export function SettingsScreen({ now }: { now: Now }) {
   const sleepMin = spanLength(settings.sleepStartMin, settings.sleepEndMin);
 
   const exportFile = async (name: string, text: string, mime: string) => {
+    if (__PREVIEW__) {
+      setMessage('Export is switched off in the web preview, because the preview page cannot save files. It works in the installed app.');
+      return;
+    }
     try {
       await saveTextFile(name, text, mime);
       setMessage(`Exported ${name}.`);

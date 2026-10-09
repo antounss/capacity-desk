@@ -10,6 +10,8 @@
 | UI flows: setup, import, logging, check-in, training, conflict appears on change, fix and undo, suggestions, grades, tuning, export, erase, restore | Automated run in headless Chromium at phone size (`e2e/smoke.cjs`, 19 steps) | Pass, no console errors, no requests leaving the app |
 | Light and dark themes, layout at 412 px wide | Screenshots reviewed by eye | Looked right; small issues fixed |
 
+The web preview (`npm run preview:page`) is the same app code in a browser. It shows the interface and the logic, but it is not the Android app: it stores data in that browser, cannot send notifications, and cannot export files.
+
 ## What has not been verified
 
 Nothing below has run. Each item has a matching check in `docs/RELEASE.md`, section 6.

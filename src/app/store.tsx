@@ -33,7 +33,7 @@ export function useApp(): AppStore {
 
 type Status = { kind: 'loading' } | { kind: 'ready' } | { kind: 'error'; message: string };
 
-export function AppProvider({ children }: { children: ReactNode }) {
+export function AppProvider({ children, initialData }: { children: ReactNode; initialData?: AppData }) {
   const [status, setStatus] = useState<Status>({ kind: 'loading' });
   const [data, setData] = useState<AppData>(emptyData);
   const [saveFailed, setSaveFailed] = useState(false);
@@ -45,9 +45,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     let cancelled = false;
     openDatabase()
-      .then(({ repo, recovered }) => {
+      .then(({ repo, recovered, fresh }) => {
         if (cancelled) return;
         repoRef.current = repo;
+        if (fresh && initialData) {
+          repo.replaceAll(initialData);
+          persist(repo).catch(() => setSaveFailed(true));
+        }
         dataRef.current = repo.loadAll();
         setData(dataRef.current);
         if (recovered === 'backup') setLoadNote('The last save was unreadable, so the previous save was loaded. Your most recent change may be missing.');
@@ -58,6 +62,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         if (!cancelled) setStatus({ kind: 'error', message: error instanceof Error ? error.message : String(error) });
       });
     return () => { cancelled = true; };
+    // Runs once: the database is opened when the app starts.
   }, []);
 
   /** Shows `next` immediately, then writes it. `write` describes the same change in SQL terms. */

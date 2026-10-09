@@ -35,7 +35,7 @@ export function Onboarding() {
   }
 
   return (
-    <div className="mx-auto flex min-h-full max-w-xl flex-col px-5 pt-[calc(1.5rem+env(safe-area-inset-top))] pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
+    <div className="mx-auto flex min-h-full max-w-xl flex-col px-5 pt-[calc(1.5rem+var(--flow-top))] pb-[calc(1.5rem+var(--flow-bottom))]">
       <p className="num text-sm text-muted">Step {step} of {STEPS.length}</p>
       <div className="mt-1 mb-5 flex gap-1" aria-hidden>
         {STEPS.map((name, i) => <span key={name} className={`h-1 flex-1 rounded-full ${i < step ? 'bg-accent' : 'bg-line'}`} />)}

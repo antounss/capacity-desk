@@ -34,6 +34,7 @@ Then in the app: skip setup, open **Settings > Import a backup**, and pick `docs
 | `npm run build` | Type-check, then build the web app into `dist/` |
 | `npm run preview` | Serve the built app at http://localhost:4173 |
 | `npm run e2e` | Optional browser test of the main flows (see `e2e/smoke.cjs` for setup) |
+| `npm run preview:page` | Build the whole app as one self-contained HTML file that opens on the sample week, for showing it on a phone before the Android build exists |
 | `npm run android:sync` | Build, then copy the web app into the Android project |
 | `npm run android:run` | Build and run on a connected phone or emulator |
 | `npm run android:apk` | Build a release APK |
@@ -76,6 +77,7 @@ src/
   content/privacy.json      The privacy policy (shown in-app; also the source of docs/store/privacy-policy.*)
 tests/                      Unit tests, with the worked example in each test name or comment
 e2e/smoke.cjs               Optional end-to-end test in a real browser
+preview/                    The single-file web preview build (sample data, no WebAssembly, fonts embedded)
 android/                    The Capacitor Android project (open this folder in Android Studio)
 scripts/                    Sample data, icon, privacy-policy and Gradle helpers
 docs/                       Plan, release guide, limitations, store materials

@@ -29,10 +29,18 @@
   --seg-training: #8e3b8a;
   --seg-recovery: #3fa7a0;
   --seg-work: #1f6fd0;
+  /* Space kept clear of the system bars by elements that are part of the page flow.
+     A host that already pads the page (the web preview) sets these to 0. */
+  --flow-top: env(safe-area-inset-top, 0px);
+  --flow-bottom: env(safe-area-inset-bottom, 0px);
+  color-scheme: light;
 }
 
+/* Dark values. Applied when the system is dark, or when a host page sets data-theme="dark";
+   an explicit data-theme="light" keeps the light values even on a dark system. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
     --paper: #0f151b;
     --surface: #18212b;
     --ink: #e8edf2;
@@ -53,6 +61,29 @@
     --seg-recovery: #4fbfb7;
     --seg-work: #4f97ee;
   }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0f151b;
+  --surface: #18212b;
+  --ink: #e8edf2;
+  --muted: #9aa7b5;
+  --line: #2c3947;
+  --accent: #37b89f;
+  --accent-ink: #06231e;
+  --accent-soft: #12362f;
+  --critical: #ff8a80;
+  --critical-soft: #3a1512;
+  --warning: #f2b354;
+  --warning-soft: #3a2a0c;
+  --info: #8bb8e8;
+  --info-soft: #152a40;
+  --seg-sleep: #5a6db5;
+  --seg-fixed: #7f8ea3;
+  --seg-training: #c26bbd;
+  --seg-recovery: #4fbfb7;
+  --seg-work: #4f97ee;
 }
 
 @theme inline {

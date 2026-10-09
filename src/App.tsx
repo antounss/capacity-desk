@@ -8,7 +8,7 @@ import { syncNotifications } from './data/notifications';
 import { analyzeWeek } from './domain/analyze';
 import { planNotifications } from './domain/notifications';
 import { nowFrom, weekStartOf } from './domain/time';
-import type { Now } from './domain/types';
+import type { AppData, Now } from './domain/types';
 import { GradesScreen } from './ui/GradesScreen';
 import { Onboarding } from './ui/Onboarding';
 import { ScheduleScreen } from './ui/ScheduleScreen';
@@ -84,13 +84,18 @@ function Shell() {
 
   return (
     <div className="flex h-full flex-col">
-      <main ref={scroller} className="flex-1 overflow-y-auto pt-[env(safe-area-inset-top)]">
+      <main ref={scroller} className="flex-1 overflow-y-auto pt-[var(--flow-top)]">
         {saveFailed ? (
           <p role="alert" className="bg-critical-soft px-4 py-2 text-sm text-critical">
             Your last change could not be saved to storage. Free up space on the device, then make any change to try again.
           </p>
         ) : null}
         {loadNote ? <p role="status" className="bg-warning-soft px-4 py-2 text-sm text-warning">{loadNote}</p> : null}
+        {__PREVIEW__ ? (
+          <p className="bg-info-soft px-4 py-2 text-sm text-info">
+            Web preview with an invented student’s week. Changes are saved in this browser only. To enter your own week, use Settings, Erase all data.
+          </p>
+        ) : null}
 
         {tab === 'week' ? (
           <WeekScreen analysis={analysis} now={now} weekStart={weekStart} onWeekChange={setWeekStart} onNavigate={setTab} />
@@ -100,7 +105,7 @@ function Shell() {
         {tab === 'settings' ? <SettingsScreen now={now} /> : null}
       </main>
 
-      <nav aria-label="Sections" className="z-30 border-t border-line bg-surface pb-[env(safe-area-inset-bottom)]">
+      <nav aria-label="Sections" className="z-30 border-t border-line bg-surface pb-[var(--flow-bottom)]">
         <div className="mx-auto grid h-15 max-w-xl grid-cols-4">
           {TABS.map(({ id, label, Icon }) => (
             <button
@@ -120,9 +125,10 @@ function Shell() {
   );
 }
 
-export default function App() {
+/** `initialData` is used once, on a device with nothing saved yet. Only the web preview passes it. */
+export default function App({ initialData }: { initialData?: AppData }) {
   return (
-    <AppProvider>
+    <AppProvider initialData={initialData}>
       <Shell />
     </AppProvider>
   );

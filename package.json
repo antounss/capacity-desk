@@ -19,7 +19,8 @@
     "android:aab": "npm run android:sync && node scripts/gradle.mjs bundleRelease",
     "sample": "node scripts/make-sample-data.mjs",
     "privacy": "node scripts/build-privacy.mjs",
-    "icons": "node scripts/make-icons.mjs"
+    "icons": "node scripts/make-icons.mjs",
+    "preview:page": "node preview/build.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.3",
@@ -45,6 +46,7 @@
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
     "vite": "^8.3.4",
+    "vite-plugin-singlefile": "^2.3.3",
     "vitest": "^5.0.3"
   }
 }
