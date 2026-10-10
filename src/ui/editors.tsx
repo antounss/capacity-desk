@@ -8,16 +8,16 @@ import { targetHoursFor } from '../domain/grades';
 import { resolveConfig } from '../config/defaultConfig';
 import { fmtHours, spanLength } from '../domain/time';
 import type { Assessment, Course, FixedCommitment, Shift, TrainingTemplate } from '../domain/types';
-import { Button, Choice, DateInput, Field, NumberInput, Select, Sheet, TextInput, TimeInput } from './kit';
+import { Button, Choice, DateInput, Field, NumberInput, Select, Sheet, SheetActions, TextInput, TimeInput } from './kit';
 import { DIFFICULTY_OPTIONS, INTENSITY_OPTIONS, KIND_OPTIONS, LOAD_OPTIONS, WEEKDAY_OPTIONS } from './labels';
 import { WEEKDAYS } from '../domain/time';
 
 function SaveBar({ onSave, onDelete, disabled, saveLabel = 'Save' }: { onSave: () => void; onDelete?: () => void; disabled?: boolean; saveLabel?: string }) {
   return (
-    <div className="flex gap-2 pt-1">
+    <SheetActions>
       {onDelete ? <Button tone="danger" onClick={onDelete}>Delete</Button> : null}
       <Button tone="primary" className="flex-1" disabled={disabled} onClick={onSave}>{saveLabel}</Button>
-    </div>
+    </SheetActions>
   );
 }
 

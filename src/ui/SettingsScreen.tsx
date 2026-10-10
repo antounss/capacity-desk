@@ -7,7 +7,7 @@ import { notificationsSupported, requestNotificationPermission } from '../data/n
 import { blocksToCsv, dayLogsToCsv, exportJson, importJson } from '../domain/exportImport';
 import { fmtHours, spanLength } from '../domain/time';
 import type { AppData, Now } from '../domain/types';
-import { Button, Field, NumberInput, Section, Sheet, Switch, TimeInput } from './kit';
+import { Button, Field, NumberInput, Section, Sheet, SheetActions, Switch, TimeInput } from './kit';
 import { Tuning } from './Tuning';
 
 
@@ -116,20 +116,20 @@ export function SettingsScreen({ now }: { now: Now }) {
           </p>
           {pendingImport.warnings.map((w) => <p key={w} className="rounded-md bg-warning-soft px-3 py-2 text-sm text-warning">{w}</p>)}
           <p className="text-muted">What is in the app now will be removed. Export a backup first if you want to keep it.</p>
-          <div className="flex gap-2">
+          <SheetActions>
             <Button className="flex-1" onClick={() => setPendingImport(null)}>Cancel</Button>
             <Button tone="primary" className="flex-1" onClick={() => { replaceAll(pendingImport.data); setPendingImport(null); setMessage('Backup imported.'); }}>Replace my data</Button>
-          </div>
+          </SheetActions>
         </Sheet>
       ) : null}
 
       {confirmErase ? (
         <Sheet title="Erase all data?" onClose={() => setConfirmErase(false)}>
           <p className="text-muted">This removes your schedule, training, blocks, check-ins, courses, grades and settings from this device. It cannot be undone, and there is no copy anywhere else.</p>
-          <div className="flex gap-2">
+          <SheetActions>
             <Button className="flex-1" onClick={() => setConfirmErase(false)}>Cancel</Button>
             <Button tone="danger" className="flex-1" onClick={() => { replaceAll(emptyData()); setConfirmErase(false); }}>Erase everything</Button>
-          </div>
+          </SheetActions>
         </Sheet>
       ) : null}
 

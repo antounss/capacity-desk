@@ -1,7 +1,8 @@
 // Small shared building blocks. Each does one thing and has no knowledge of the domain.
 
 import { X } from 'lucide-react';
-import { useEffect, useId, useState, type ButtonHTMLAttributes, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useId, useState, type ButtonHTMLAttributes, type FocusEvent, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import { pushBack } from '../app/backStack';
 import { fmtTime, parseTime } from '../domain/time';
 
@@ -23,9 +24,19 @@ export function Button({ tone = 'quiet', className = '', ...props }: ButtonHTMLA
   );
 }
 
-/** A bottom sheet. Closes on the scrim, the close button, Escape and Android back. */
+/** Where a sheet's action buttons are drawn: a bar below the scrolling part of the sheet. */
+const SheetFooterSlot = createContext<HTMLElement | null>(null);
+
+/**
+ * A bottom sheet. Closes on the scrim, the close button, Escape and Android back.
+ *
+ * The body scrolls; the action buttons do not. They sit in a bar pinned to the bottom
+ * of the sheet (see SheetActions), so Save stays in view when the keyboard takes half
+ * the screen and the form above it has to scroll.
+ */
 export function Sheet({ title, onClose, children }: { title: string; onClose: () => void; children: ReactNode }) {
   const titleId = useId();
+  const [footer, setFooter] = useState<HTMLElement | null>(null);
   useEffect(() => pushBack(onClose), [onClose]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
@@ -33,25 +44,44 @@ export function Sheet({ title, onClose, children }: { title: string; onClose: ()
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose]);
 
+  // When a field takes focus the keyboard opens and the space shrinks. Once that has
+  // settled, bring the field back into the visible part of the sheet.
+  const keepFieldVisible = (e: FocusEvent<HTMLDivElement>) => {
+    const field = e.target;
+    if (!field.matches('input, select, textarea')) return;
+    setTimeout(() => field.scrollIntoView({ block: 'center', behavior: 'smooth' }), 350);
+  };
+
   return (
-    <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/45" onClick={onClose}>
+    // --keyboard is the height of the on-screen keyboard when it overlaps the page
+    // (see src/app/keyboard.ts); it lifts the whole sheet above the keyboard.
+    <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/45 pb-[var(--keyboard,0px)]" onClick={onClose}>
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="sheet-in max-h-[92%] w-full max-w-xl overflow-y-auto overscroll-contain rounded-t-2xl bg-surface px-4 pt-3 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(0,0,0,0.25)]"
+        className="sheet-in flex max-h-[92%] w-full max-w-xl flex-col rounded-t-2xl bg-surface pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_30px_rgba(0,0,0,0.25)]"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="mb-3 flex items-center justify-between">
+        <div className="flex shrink-0 items-center justify-between px-4 pt-3 pb-2">
           <h2 id={titleId} className="text-xl">{title}</h2>
           <button type="button" aria-label="Close" onClick={onClose} className="-mr-2 flex size-11 items-center justify-center rounded-md text-muted">
             <X size={22} aria-hidden />
           </button>
         </div>
-        <div className="flex flex-col gap-4">{children}</div>
+        <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain px-4 pb-4" onFocus={keepFieldVisible}>
+          <SheetFooterSlot.Provider value={footer}>{children}</SheetFooterSlot.Provider>
+        </div>
+        <div ref={setFooter} className="shrink-0 border-t border-line px-4 py-3 empty:hidden" />
       </div>
     </div>
   );
+}
+
+/** A sheet's action buttons. Rendered in the sheet's pinned bottom bar, wherever it is written. */
+export function SheetActions({ children }: { children: ReactNode }) {
+  const slot = useContext(SheetFooterSlot);
+  return slot ? createPortal(<div className="flex gap-2">{children}</div>, slot) : null;
 }
 
 export function Field({ label, hint, error, children }: { label: string; hint?: string; error?: string | null; children: ReactNode }) {

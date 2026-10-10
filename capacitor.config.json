@@ -1,0 +1,18 @@
+{
+  "appId": "com.capacitydesk.app",
+  "appName": "Capacity Desk",
+  "webDir": "dist",
+  "android": {
+    "allowMixedContent": false,
+    "minWebViewVersion": 97
+  },
+  "plugins": {
+    "SystemBars": {
+      "initialViewportFitValueHint": "cover"
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_notify",
+      "iconColor": "#0B6E5F"
+    }
+  }
+}

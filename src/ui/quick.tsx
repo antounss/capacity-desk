@@ -9,7 +9,7 @@ import { newId, useApp } from '../app/store';
 import { addDays, fmtDate, fmtTime, weekStartOf } from '../domain/time';
 import { type ResolvedSession, sessionsOn } from '../domain/timeline';
 import type { Block, EnergyLevel, Now, TrainingSession } from '../domain/types';
-import { Button, Choice, DateInput, ENERGY_OPTIONS, Empty, Field, NumberInput, Select, Sheet, TextInput, TimeInput } from './kit';
+import { Button, Choice, DateInput, ENERGY_OPTIONS, Empty, Field, NumberInput, Select, Sheet, SheetActions, TextInput, TimeInput } from './kit';
 import { INTENSITY_LABEL, INTENSITY_OPTIONS, LOAD_OPTIONS } from './labels';
 
 const DURATIONS = [25, 50, 90, 120];
@@ -90,7 +90,9 @@ export function LogBlockSheet({ now, onClose }: { now: Now; onClose: () => void 
           It ended just now. Change the time or length
         </button>
       )}
-      <Button tone="primary" disabled={!valid} onClick={save}>Log block</Button>
+      <SheetActions>
+        <Button tone="primary" className="flex-1" disabled={!valid} onClick={save}>Log block</Button>
+      </SheetActions>
     </Sheet>
   );
 }
@@ -117,7 +119,9 @@ export function EnergySheet({ now, onClose }: { now: Now; onClose: () => void })
       <Field label="Hours slept last night (optional)" hint="Overrides the estimate made from your plan.">
         <NumberInput value={sleep} onChange={(sleepHours) => save({ sleepHours: sleepHours != null && sleepHours >= 0 && sleepHours <= 24 ? sleepHours : null })} min={0} max={24} step={0.5} placeholder="Not logged" />
       </Field>
-      <Button tone="primary" onClick={onClose}>Done</Button>
+      <SheetActions>
+        <Button tone="primary" className="flex-1" onClick={onClose}>Done</Button>
+      </SheetActions>
     </Sheet>
   );
 }
@@ -211,10 +215,10 @@ export function BlockSheet({ item, defaultDate, defaultStart, now, onClose }: {
         { value: 'planned', label: 'Planned' }, { value: 'done', label: 'Done' }, { value: 'skipped', label: 'Skipped' },
       ]} />
       {status === 'done' ? <Choice<EnergyLevel | null> label="Energy during it" value={energy} onChange={setEnergy} options={ENERGY_OPTIONS} /> : null}
-      <div className="flex gap-2">
+      <SheetActions>
         {item ? <Button tone="danger" onClick={() => { apply([{ op: 'remove', collection: 'blocks', id: item.id }]); onClose(); }}>Delete</Button> : null}
         <Button tone="primary" className="flex-1" disabled={!valid} onClick={save}>Save</Button>
-      </div>
+      </SheetActions>
     </Sheet>
   );
 }
@@ -259,7 +263,7 @@ export function SessionSheet({ item, defaultDate, defaultStatus = 'planned', onC
       <Choice label="Status" value={status} onChange={setStatus} options={[
         { value: 'planned', label: 'Planned' }, { value: 'done', label: 'Done' }, { value: 'skipped', label: 'Skipped' },
       ]} />
-      <div className="flex gap-2">
+      <SheetActions>
         {item?.stored && item.templateId ? (
           <Button onClick={() => { apply([{ op: 'remove', collection: 'trainingSessions', id: item.id }]); onClose(); }}>Reset to weekly plan</Button>
         ) : null}
@@ -267,7 +271,7 @@ export function SessionSheet({ item, defaultDate, defaultStatus = 'planned', onC
           <Button tone="danger" onClick={() => { apply([{ op: 'remove', collection: 'trainingSessions', id: item.id }]); onClose(); }}>Delete</Button>
         ) : null}
         <Button tone="primary" className="flex-1" disabled={!valid} onClick={save}>Save</Button>
-      </div>
+      </SheetActions>
     </Sheet>
   );
 }

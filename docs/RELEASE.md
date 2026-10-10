@@ -37,7 +37,7 @@ Then work through **section 6, the device checklist**. Do not go further until i
 
 The ID is currently `com.capacitydesk.app`. Once an app is uploaded to Google Play its ID can never change, and it should be a name you control. If you want a different one, change it now in all three places:
 
-- `capacitor.config.ts` → `appId`
+- `capacitor.config.json` → `appId`
 - `android/app/build.gradle` → `namespace` and `applicationId`
 - `android/app/src/main/java/com/capacitydesk/app/MainActivity.java` → the `package` line, and move the file to the matching folder
 

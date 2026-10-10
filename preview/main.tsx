@@ -2,10 +2,13 @@
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { trackKeyboard } from '../src/app/keyboard';
 import App from '../src/App';
 import '../src/index.css';
 import './preview.css';
 import { sampleForThisWeek } from './seed';
+
+trackKeyboard();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

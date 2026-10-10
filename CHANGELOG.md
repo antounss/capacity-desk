@@ -3,6 +3,13 @@
 All notable changes to Capacity Desk. Versions follow [semantic versioning](https://semver.org).
 The version is set in `package.json` and in `android/app/build.gradle` (`versionName`, plus `versionCode`, which must rise with every upload).
 
+## Unreleased
+
+Found on the first run on a real phone (2026-10-10):
+
+- **Fixed:** the on-screen keyboard covered the Save button in sheets. Action buttons now sit in a bar pinned to the bottom of the sheet, the form above them scrolls, and the sheet is lifted above the keyboard on phones where the keyboard overlaps the page.
+- **Fixed:** `npm run android:sync` failed on Node.js versions before 22.18 because the Capacitor config was a TypeScript file. It is now `capacitor.config.json`.
+
 ## 1.0.0 (2026-10-09)
 
 First version. Android `versionCode` 1.
